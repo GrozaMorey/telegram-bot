@@ -1,6 +1,8 @@
 from sqlalchemy import MetaData, Table, Column, Integer, String, create_engine
 from sqlalchemy.orm import declarative_base, query, sessionmaker
+from dotenv import dotenv_values
 
+env = dotenv_values(".env")
 Base = declarative_base()
 
 
@@ -48,7 +50,7 @@ class Info(Base):
         self.text = text
         self.message_id = message_id
 
-engine = create_engine("postgresql://postgres:123@db:5432/bot")
+engine = create_engine(f"postgresql://postgres:123@{env['DBHOST']}:5432/bot")
 Session = sessionmaker(bind=engine)
 session = Session()
 
