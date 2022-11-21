@@ -11,11 +11,11 @@ import asyncio
 
 
 loop = asyncio.get_event_loop()
-bot = TeleBot("its a secret", parse_mode="html")
-api_id = "its a secret"
-api_hash = "its a secret"
+bot = TeleBot(env["BOT"], parse_mode="html")
+api_id = env["API"]
+api_hash = env["API_H"]
 client = TelegramClient('anon', api_id, api_hash)
-provider_token = "its a secret"
+provider_token = env["provider"]
 
 
 def send_date_choice(call, vehicle, vehicle_call, type):
